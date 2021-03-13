@@ -53,6 +53,7 @@ class LinkedListTest
     @org.junit.jupiter.api.Test
     void sizeOne()
     {
+        linkedList.addToFront(item1);
         Assertions.assertEquals(linkedList.size(), 1);
     }
 
