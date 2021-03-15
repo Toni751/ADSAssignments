@@ -1,5 +1,6 @@
 package linkedstack;
 
+import customexceptions.EmptyStackException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -65,20 +66,20 @@ class LinkedStackTest
     @Test
     void popEmpty()
     {
-        Assertions.assertThrows(Exception.class, () ->
+        Assertions.assertThrows(EmptyStackException.class, () ->
                 linkedStack.pop());
     }
 
     @Test
     void popMany() throws Exception
-    {   //not sure but shouldn't pop remove from the end?
+    {   //not sure but shouldn't pop remove from the end? The stack is last in first out, so it should remove from the beginning
         linkedStack.push(item1);
         linkedStack.push(item2);
         linkedStack.push(item3);
-        Assertions.assertFalse(linkedStack.isEmpty());
         Object object3 = linkedStack.pop();
         Object object2 = linkedStack.pop();
         Object object1 = linkedStack.pop();
+
         Assertions.assertEquals(object1, 1);
         Assertions.assertEquals(object2, 2);
         Assertions.assertEquals(object3, 3);

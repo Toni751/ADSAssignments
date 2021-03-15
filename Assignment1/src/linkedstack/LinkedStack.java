@@ -1,6 +1,6 @@
 package linkedstack;
 
-import java.util.EmptyStackException;
+import customexceptions.EmptyStackException;
 
 public class LinkedStack<T> implements Stack<T> {
     private LinkedList<T> list;
@@ -20,11 +20,11 @@ public class LinkedStack<T> implements Stack<T> {
     }
 
     @Override
-    public T pop() throws Exception {
+    public T pop() throws EmptyStackException {
         try {
             return list.removeFirst();
         } catch (Exception e) {
-            throw new Exception("Cannot pop from empty stack");
+            throw new EmptyStackException("Cannot pop from empty stack");
         }
     }
 }

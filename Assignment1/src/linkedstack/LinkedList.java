@@ -1,5 +1,7 @@
 package linkedstack;
 
+import customexceptions.EmptyListException;
+
 public class LinkedList<T> implements List<T>{
     private Node<T> head;
     private int size;
@@ -23,9 +25,9 @@ public class LinkedList<T> implements List<T>{
     }
 
     @Override
-    public T removeFirst() throws Exception {
-        if(size == 0)
-            throw new Exception("Cannot remove from an empty list");
+    public T removeFirst() throws EmptyListException {
+        if(isEmpty())
+            throw new EmptyListException("Cannot remove from an empty list");
 
         T firstNodeData = head.getData();
         head = head.getNext();

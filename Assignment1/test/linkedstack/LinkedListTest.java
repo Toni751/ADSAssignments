@@ -1,7 +1,11 @@
 package linkedstack;
 
+import customexceptions.EmptyListException;
 import linkedstack.LinkedList;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class LinkedListTest
 {
@@ -13,7 +17,7 @@ class LinkedListTest
     private int item5;
 
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp()
     {
         this.linkedList = new LinkedList<>();
@@ -24,12 +28,12 @@ class LinkedListTest
         item5 = 5;
     }
 
-    @org.junit.jupiter.api.AfterEach
+    @AfterEach
     void tearDown()
     {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isEmptyFalse()
     {
         linkedList.addToFront(item1);
@@ -37,27 +41,27 @@ class LinkedListTest
 
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void isEmptyTrue()
     {
         Assertions.assertTrue(linkedList.isEmpty());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void sizeZero()
     {
 
         Assertions.assertEquals(linkedList.size(), 0);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void sizeOne()
     {
         linkedList.addToFront(item1);
         Assertions.assertEquals(linkedList.size(), 1);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void sizeMany()
     {
         linkedList.addToFront(item3);
@@ -65,23 +69,19 @@ class LinkedListTest
         Assertions.assertEquals(linkedList.size(), 2);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addToFrontToEmpty()
-
     {
-
         Assertions.assertEquals(linkedList.size(), 0);
         linkedList.addToFront(item3);
         Assertions.assertFalse(linkedList.isEmpty());
         Assertions.assertEquals(linkedList.size(), 1);
-
     }
 
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addToFrontToMany()
     {
-
         linkedList.addToFront(item4);
         linkedList.addToFront(item5);
         linkedList.addToFront(item3);
@@ -89,37 +89,43 @@ class LinkedListTest
         Assertions.assertEquals(linkedList.size(), 3);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeFirstEmpty()
     {
-
-        Assertions.assertThrows(Exception.class, () ->
+        Assertions.assertThrows(EmptyListException.class, () ->
                 linkedList.removeFirst());
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeFirstOne() throws Exception
     {
         Assertions.assertEquals(linkedList.size(), 0);
         linkedList.addToFront(item1);
         Assertions.assertEquals(linkedList.size(), 1);
-        linkedList.removeFirst();
+        int firstElement = linkedList.removeFirst();
         Assertions.assertEquals(linkedList.size(), 0);
+        Assertions.assertEquals(item1, firstElement);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeFirstMany() throws Exception
     {
-
+        int firstItem;
         linkedList.addToFront(item4);
         linkedList.addToFront(item5);
         linkedList.addToFront(item2);
         Assertions.assertEquals(linkedList.size(), 3);
-        linkedList.removeFirst();
+
+        firstItem = linkedList.removeFirst();
         Assertions.assertEquals(linkedList.size(), 2);
-        linkedList.removeFirst();
+        Assertions.assertEquals(firstItem, item2);
+
+        firstItem = linkedList.removeFirst();
         Assertions.assertEquals(linkedList.size(), 1);
-        linkedList.removeFirst();
+        Assertions.assertEquals(firstItem, item5);
+
+        firstItem = linkedList.removeFirst();
         Assertions.assertEquals(linkedList.size(), 0);
+        Assertions.assertEquals(firstItem, item4);
     }
 }

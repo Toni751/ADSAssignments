@@ -49,4 +49,11 @@ class NodeTest
         node.setNext(node1);
         Assertions.assertEquals(node.getNext().getData(), 2);
     }
+
+    @Test
+    void setNextNodeAsNull()
+    {
+        node.setNext(null);
+        Assertions.assertNull(node.getNext());
+    }
 }

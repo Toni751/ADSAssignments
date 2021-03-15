@@ -1,10 +1,10 @@
 package linkedstack;
 
-import java.util.EmptyStackException;
+import customexceptions.EmptyStackException;
 
 public interface Stack<T>
 {
     boolean isEmpty();
     void push(T elem);
-    T pop() throws Exception;
+    T pop() throws EmptyStackException;
 }

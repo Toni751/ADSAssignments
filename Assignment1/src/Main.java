@@ -1,4 +1,5 @@
 import calculatorvisitor.CalculatorVisitor;
+import customexceptions.MalformedExpressionException;
 import token.Operand;
 import token.Operation;
 import token.Operator;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 public class Main
 {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws MalformedExpressionException {
         CalculatorVisitor calculatorVisitor = new CalculatorVisitor();
         Client client = new Client(calculatorVisitor);
 
