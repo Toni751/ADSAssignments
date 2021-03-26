@@ -71,22 +71,4 @@ public class CalculatorVisitorTest {
 
         Assertions.assertThrows(MalformedExpressionException.class, () -> calculatorVisitor.getResult());
     }
-
-//    @Test
-//    void GetResultWorksWithSingleOperand() throws Exception
-//    {
-//        calculatorVisitor.visit(new Operand(1));
-//
-//        Assertions.assertEquals(1, calculatorVisitor.getResult());
-//    }
-//
-//    @Test
-//    void GetResultWorksAfterSingleOperationExpression() throws Exception
-//    {
-//        calculatorVisitor.visit(new Operand(1));
-//        calculatorVisitor.visit(new Operand(2));
-//        calculatorVisitor.visit(new Operator(Operation.ADD));
-//
-//        Assertions.assertEquals(3, calculatorVisitor.getResult());
-//    }
 }
