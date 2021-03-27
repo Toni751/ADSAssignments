@@ -1,3 +1,4 @@
+import binarysearchtree.BinaryTree;
 import binarysearchtree.BinaryTreeNode;
 
 public class Main {
@@ -16,6 +17,12 @@ public class Main {
 
         root.getRightChild().addLeftChild(new BinaryTreeNode(6));
         root.getRightChild().addRightChild(new BinaryTreeNode(8));
+        BinaryTree binaryTree = new BinaryTree(root);
+        System.out.println(binaryTree.inOrder());
+        System.out.println(binaryTree.preOrder());
+        System.out.println(binaryTree.postOrder());
+        System.out.println(binaryTree.levelOrder());
+        System.out.println(binaryTree.height());
         binaryTreePrint.printTree(root);
     }
 }
