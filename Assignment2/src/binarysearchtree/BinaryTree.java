@@ -94,9 +94,8 @@ public class BinaryTree
     }
 
     public void postOrder(BinaryTreeNode root, ArrayList<Integer> postorder)
-    {
-        if (root == null)
-            return;
+    {if (root == null)
+        return;
         postOrder(root.getLeftChild(), postorder);
         postOrder(root.getRightChild(), postorder);
         postorder.add(root.getElement());
@@ -143,6 +142,6 @@ public class BinaryTree
 
     public int height()
     {
-        return recursiveHeight(root);
+        return recursiveHeight(getRoot());
     }
 }

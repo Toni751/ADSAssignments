@@ -1,10 +1,14 @@
 package binarysearchtree;
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
-public class BinaryTreeTest {
+import java.util.ArrayList;
+
+public class BinaryTreeTest
+{
 
     private BinaryTreeNode regularTreeRoot; // value 5
     private BinaryTree regularTree; // size 9
@@ -23,8 +27,9 @@ public class BinaryTreeTest {
     private BinaryTreeNode heavyRightTreeRoot; // value 1
     private BinaryTree heavyRightTree; // size 5
 
-    @BeforeEach
-    void setUpBinaryTrees() {
+
+    public BinaryTreeTest()
+    {
         regularTreeRoot = new BinaryTreeNode(5);
 
         regularTreeRoot.addLeftChild(new BinaryTreeNode(3));
@@ -47,7 +52,7 @@ public class BinaryTreeTest {
         treeWithOnlyTheRoot = new BinaryTree(rootTreeWithOnlyTheRoot);
 
         fullTreeRoot = new BinaryTreeNode(4);
-
+        fullTree = new BinaryTree(fullTreeRoot);
         fullTreeRoot.addLeftChild(new BinaryTreeNode(2));
         fullTreeRoot.addRightChild(new BinaryTreeNode(6));
 
@@ -83,104 +88,264 @@ public class BinaryTreeTest {
     }
 
     @Test
-    void getRootOfEmptyTree() {
+    public void getRootOfEmptyTree()
+    {
         Assertions.assertNull(emptyTree.getRoot());
     }
 
     @Test
-    void getRootOfTreeWithOnlyRoot() {
+    public void getRootOfTreeWithOnlyRoot()
+    {
         Assertions.assertEquals(4, treeWithOnlyTheRoot.getRoot().getElement());
     }
 
     @Test
-    void getRootOfRegularTree() {
+    public void getRootOfRegularTree()
+    {
         Assertions.assertEquals(regularTreeRoot, regularTree.getRoot());
     }
 
     @Test
-    void setRootOfEmptyTree() {
+    public void setRootOfEmptyTree()
+    {
         emptyTree.setRoot(new BinaryTreeNode(3));
         Assertions.assertEquals(3, emptyTree.getRoot().getElement());
     }
 
     @Test
-    void setRootOfTreeWithOnlyRoot() {
+    public void setRootOfTreeWithOnlyRoot()
+    {
         treeWithOnlyTheRoot.setRoot(new BinaryTreeNode(3));
         Assertions.assertEquals(3, treeWithOnlyTheRoot.getRoot().getElement());
     }
 
     @Test
-    void emptyTreeIsEmpty() {
+    public void emptyTreeIsEmpty()
+    {
         Assertions.assertTrue(emptyTree.isEmpty());
     }
 
     @Test
-    void treeWithOnlyRootIsNotEmpty() {
+    public void treeWithOnlyRootIsNotEmpty()
+    {
         Assertions.assertFalse(treeWithOnlyTheRoot.isEmpty());
     }
 
     @Test
-    void regularTreeIsNotEmpty() {
+    public void regularTreeIsNotEmpty()
+    {
         Assertions.assertFalse(regularTree.isEmpty());
     }
 
     @Test
-    void emptyTreeHasSize0() {
+    public void emptyTreeHasSize0()
+    {
         Assertions.assertEquals(0, emptyTree.size());
     }
 
     @Test
-    void treeWithOnlyRootHasSize1() {
+    public void treeWithOnlyRootHasSize1()
+    {
         Assertions.assertEquals(1, treeWithOnlyTheRoot.size());
     }
 
     @Test
-    void regularTreeHasSize9() {
+    public void regularTreeHasSize9()
+    {
         Assertions.assertEquals(9, regularTree.size());
     }
 
     @Test
-    void fullTreeHasSize7() {
+    public void fullTreeHasSize7()
+    {
         Assertions.assertEquals(7, fullTree.size());
     }
 
     @Test
-    void heavyLeftTreeHasSize5() {
+    public void heavyLeftTreeHasSize5()
+    {
         Assertions.assertEquals(5, heavyLeftTree.size());
     }
 
     @Test
-    void heavyRightTreeHasSize5() {
+    public void heavyRightTreeHasSize5()
+    {
         Assertions.assertEquals(5, heavyRightTree.size());
     }
 
     @Test
-    void emptyTreeDoesntContainElement() {
+    public void emptyTreeDoesntContainElement()
+    {
         Assertions.assertFalse(emptyTree.contains(2));
     }
 
     @Test
-    void treeWithOnlyRootContainsElement() {
+    public void treeWithOnlyRootContainsElement()
+    {
         Assertions.assertTrue(treeWithOnlyTheRoot.contains(4));
     }
 
     @Test
-    void regularTreeContains2() {
+    public void regularTreeContains2()
+    {
         Assertions.assertTrue(regularTree.contains(2));
     }
 
     @Test
-    void regularTreeDoesntContain9() {
+    public void regularTreeDoesntContain9()
+    {
         Assertions.assertFalse(regularTree.contains(9));
     }
 
     @Test
-    void heavyLeftTreeContains4() {
+    public void heavyLeftTreeContains4()
+    {
         Assertions.assertTrue(heavyLeftTree.contains(4));
     }
 
     @Test
-    void heavyRightTreeDoesntContain7() {
+    public void heavyRightTreeDoesntContain7()
+    {
         Assertions.assertFalse(heavyRightTree.contains(7));
     }
+
+    @Test
+    public void heightZero()
+    {
+        Assertions.assertEquals(0, emptyTree.height());
+    }
+
+    @Test
+    public void heightOne()
+    {
+        Assertions.assertEquals(1, treeWithOnlyTheRoot.height());
+    }
+
+    @Test
+    public void heightMany()
+    {
+
+
+    }
+
+    @Test
+    public void preOrderZero()
+    {
+        Assertions.assertEquals(null, emptyTree.preOrder());
+    }
+
+    @Test
+    public void preOrderOne()
+    {
+        ArrayList<Integer> one = new ArrayList<>();
+        one.add(4);
+        Assertions.assertEquals(one, treeWithOnlyTheRoot.preOrder());
+    }
+
+    @Test
+    public void preOrderMany()
+    {
+        ArrayList<Integer> many = new ArrayList<>();
+        many.add(5);
+        many.add(3);
+        many.add(2);
+        many.add(1);
+        many.add(2);
+        many.add(4);
+        many.add(7);
+        many.add(6);
+        many.add(8);
+        Assertions.assertEquals(many, regularTree.preOrder());
+    }
+
+    @Test
+    public void inOrderZero()
+    {
+        Assertions.assertEquals(null, emptyTree.inOrder());
+    }
+
+    @Test
+    public void inOrderOne()
+    {
+        ArrayList<Integer> one = new ArrayList<>();
+        one.add(4);
+        Assertions.assertEquals(one, treeWithOnlyTheRoot.inOrder());
+    }
+
+    @Test
+    public void inOrderMany()
+    {
+        ArrayList<Integer> many = new ArrayList<>();
+        many.add(1);
+        many.add(2);
+        many.add(2);
+        many.add(3);
+        many.add(4);
+        many.add(5);
+        many.add(6);
+        many.add(7);
+        many.add(8);
+        Assertions.assertEquals(many, regularTree.inOrder());
+    }
+
+    @Test
+    public void postOrderZero()
+    {
+        Assertions.assertEquals(null, emptyTree.postOrder());
+    }
+
+    @Test
+    public void postOrderOne()
+    {
+        ArrayList<Integer> one = new ArrayList<>();
+        one.add(4);
+        Assertions.assertEquals(one, treeWithOnlyTheRoot.postOrder());
+    }
+
+    @Test
+    public void postOrderMany()
+    {
+        ArrayList<Integer> many = new ArrayList<>();
+        many.add(1);
+        many.add(2);
+        many.add(2);
+        many.add(4);
+        many.add(3);
+        many.add(6);
+        many.add(8);
+        many.add(7);
+        many.add(5);
+        Assertions.assertEquals(many, regularTree.postOrder());
+    }
+
+    @Test
+    public void levelOrderZero()
+    {
+        Assertions.assertEquals(null, emptyTree.levelOrder());
+    }
+
+    @Test
+    public void levelOrderOne()
+    {
+        ArrayList<Integer> one = new ArrayList<>();
+        one.add(4);
+        Assertions.assertEquals(one, treeWithOnlyTheRoot.levelOrder());
+    }
+
+    @Test
+    public void levelOrderMany()
+    {
+        ArrayList<Integer> many = new ArrayList<>();
+        many.add(5);
+        many.add(3);
+        many.add(7);
+        many.add(2);
+        many.add(4);
+        many.add(6);
+        many.add(8);
+        many.add(1);
+        many.add(2);
+        Assertions.assertEquals(many, regularTree.levelOrder());
+    }
+
 }
