@@ -57,10 +57,11 @@ public class BinaryTree
         return recursiveContains(node.getLeftChild(), element) || recursiveContains(node.getRightChild(), element);
     }
 
-    public void inOrder(BinaryTreeNode root, ArrayList<Integer> inOrder)
+    private void inOrder(BinaryTreeNode root, ArrayList<Integer> inOrder)
     {
         if (root == null)
             return;
+
         inOrder(root.getLeftChild(), inOrder);
         inOrder.add(root.getElement());
         inOrder(root.getRightChild(), inOrder);
@@ -70,15 +71,17 @@ public class BinaryTree
     {
         if (root == null)
             return null;
+
         ArrayList<Integer> inOrder = new ArrayList<Integer>();
         inOrder(root, inOrder);
         return inOrder;
     }
 
-    public void preOrder(BinaryTreeNode root, ArrayList<Integer> preorder)
+    private void preOrder(BinaryTreeNode root, ArrayList<Integer> preorder)
     {
         if (root == null)
             return;
+
         preorder.add(root.getElement());
         preOrder(root.getLeftChild(), preorder);
         preOrder(root.getRightChild(), preorder);
@@ -93,9 +96,11 @@ public class BinaryTree
         return preorder;
     }
 
-    public void postOrder(BinaryTreeNode root, ArrayList<Integer> postorder)
-    {if (root == null)
-        return;
+    private void postOrder(BinaryTreeNode root, ArrayList<Integer> postorder)
+    {
+        if (root == null)
+            return;
+
         postOrder(root.getLeftChild(), postorder);
         postOrder(root.getRightChild(), postorder);
         postorder.add(root.getElement());
@@ -115,6 +120,7 @@ public class BinaryTree
         ArrayList<Integer> res = new ArrayList<Integer>();
         if (root == null)
             return null;
+
         Queue<BinaryTreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty())
@@ -131,9 +137,9 @@ public class BinaryTree
     }
 
 
-    public int recursiveHeight(BinaryTreeNode node)
+    private int recursiveHeight(BinaryTreeNode node)
     {
-        if (node == null)
+        if (node == null || (node.getLeftChild() == null && node.getRightChild() == null))
         {
             return 0;
         }

@@ -1,9 +1,8 @@
 package binarysearchtree;
 
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
@@ -27,8 +26,8 @@ public class BinaryTreeTest
     private BinaryTreeNode heavyRightTreeRoot; // value 1
     private BinaryTree heavyRightTree; // size 5
 
-
-    public BinaryTreeTest()
+    @BeforeEach
+    public void setUp()
     {
         regularTreeRoot = new BinaryTreeNode(5);
 
@@ -218,14 +217,16 @@ public class BinaryTreeTest
     @Test
     public void heightOne()
     {
-        Assertions.assertEquals(1, treeWithOnlyTheRoot.height());
+        Assertions.assertEquals(0, treeWithOnlyTheRoot.height());
     }
 
     @Test
     public void heightMany()
     {
-
-
+        Assertions.assertEquals(3, regularTree.height());
+        Assertions.assertEquals(2, fullTree.height());
+        Assertions.assertEquals(3, heavyLeftTree.height());
+        Assertions.assertEquals(3, heavyRightTree.height());
     }
 
     @Test
