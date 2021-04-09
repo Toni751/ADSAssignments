@@ -1,5 +1,7 @@
 package binarysearchtree;
 
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -151,3 +153,5 @@ public class BinaryTree
         return recursiveHeight(getRoot());
     }
 }
+
+
