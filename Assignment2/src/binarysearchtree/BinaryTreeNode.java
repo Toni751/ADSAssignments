@@ -33,4 +33,5 @@ public class BinaryTreeNode {
     public BinaryTreeNode getRightChild() {
         return rightChild;
     }
+
 }

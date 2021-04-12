@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 public class BinarySearchTreeTest {
 
     private BinaryTreeNode regularTreeRoot;
@@ -58,4 +60,47 @@ public class BinarySearchTreeTest {
         Assertions.assertEquals(bst.findMin(regularTreeRoot), 1);
     }
 
+    @Test
+    public void removeLeafNode()
+    {
+        bst.removeElement(1);
+        Assertions.assertFalse(bst.contains(1));
+        Assertions.assertNull(regularTreeRoot.getLeftChild().getLeftChild().getLeftChild());
+    }
+    @Test
+    public void removeNodeWithOneChild()
+    {
+        bst.insert(9);
+        bst.removeElement(8);
+        Assertions.assertFalse(bst.contains(8));
+        Assertions.assertEquals(9, regularTreeRoot.getRightChild().getRightChild().getElement());
+        Assertions.assertNull(regularTreeRoot.getRightChild().getRightChild().getRightChild());
+    }
+    @Test
+    public void removeNodeWithTwoChildren()
+    {
+        Assertions.assertEquals(6, regularTreeRoot.getRightChild().getLeftChild().getElement());
+        bst.removeElement(5);
+        Assertions.assertFalse(bst.contains(5));
+        Assertions.assertEquals(6, regularTreeRoot.getElement());
+        Assertions.assertEquals(7, regularTreeRoot.getRightChild().getElement());
+        Assertions.assertNull(regularTreeRoot.getRightChild().getLeftChild());
+        Assertions.assertEquals(8, regularTreeRoot.getRightChild().getRightChild().getElement());
+    }
+    @Test
+    public void rebalance()
+    {
+        bst.removeElement(5);
+        bst.rebalance();
+        ArrayList<Integer> preOrder  = new ArrayList<>();
+        preOrder.add(3);
+        preOrder.add(2);
+        preOrder.add(1);
+        preOrder.add(2);
+        preOrder.add(6);
+        preOrder.add(4);
+        preOrder.add(7);
+        preOrder.add(8);
+        Assertions.assertEquals(preOrder, bst.preOrder());
+    }
 }
