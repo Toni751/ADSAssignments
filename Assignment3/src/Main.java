@@ -8,5 +8,6 @@ public class Main
     {
         ArrayList<ArrayList<Integer>>  ints= Queen.nQueenList(4);
         System.out.println(ints);
+
     }
 }
