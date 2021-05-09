@@ -60,7 +60,7 @@ public class Queen
         for (int a = 0; a < solutions.size(); a++)
         {
 
-            System.out.println("\n" + "Solution " + a);
+            System.out.println("\n" + "Solution " + a+1);
             ArrayList<Integer> sol = solutions.get(a);
             for (int i = 0; i < sol.size(); i++)
             {
