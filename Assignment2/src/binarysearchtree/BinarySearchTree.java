@@ -32,7 +32,11 @@ public class BinarySearchTree extends BinaryTree {
             y.addRightChild(newNode);
     }
 
-    public int findMin(BinaryTreeNode node){
+    public int findMin(){
+        return findMin(root);
+    }
+
+    private int findMin(BinaryTreeNode node){
         if (node == null)
             return Integer.MAX_VALUE;
 
@@ -47,7 +51,11 @@ public class BinarySearchTree extends BinaryTree {
         return res;
     }
 
-    public int findMax(BinaryTreeNode node){
+    public int findMax(){
+        return findMax(root);
+    }
+
+    private int findMax(BinaryTreeNode node){
         if (node == null)
             return Integer.MIN_VALUE;
 
@@ -106,6 +114,7 @@ public class BinarySearchTree extends BinaryTree {
             return null;
         }
         int mid = (start + end)/2;
+        System.out.println("Middle element is " + inOrder.get(mid));
         BinaryTreeNode node = new BinaryTreeNode(inOrder.get(mid));
 
         node.addLeftChild(rebalance(inOrder, start, mid-1));

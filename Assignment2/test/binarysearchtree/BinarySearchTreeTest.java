@@ -52,12 +52,12 @@ public class BinarySearchTreeTest {
 
     @Test
     public void findMax(){
-        Assertions.assertEquals(bst.findMax(regularTreeRoot),8);
+        Assertions.assertEquals(bst.findMax(),8);
     }
 
     @Test
     public void findMin() {
-        Assertions.assertEquals(bst.findMin(regularTreeRoot), 1);
+        Assertions.assertEquals(bst.findMin(), 1);
     }
 
     @Test

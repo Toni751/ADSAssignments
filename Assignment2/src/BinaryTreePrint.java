@@ -4,8 +4,6 @@ import java.util.ArrayList;
 
 public class BinaryTreePrint {
 
-    BinaryTreeNode root;
-
     /*
      * This method requires that there is a class BinaryTreeNode
      * and that the field "root" is initialized

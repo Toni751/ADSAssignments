@@ -20,12 +20,19 @@ public class Main {
         root.getRightChild().addRightChild(new BinaryTreeNode(8));
         BinaryTree binaryTree = new BinaryTree(root);
         BinarySearchTree bst = new BinarySearchTree(root);
-        System.out.println(binaryTree.inOrder());
-        System.out.println(binaryTree.preOrder());
-        System.out.println(binaryTree.postOrder());
-        System.out.println(binaryTree.levelOrder());
-        System.out.println(bst.inOrder());
-        binaryTreePrint.printTree(root);
+//        System.out.println(binaryTree.inOrder());
+//        System.out.println(binaryTree.preOrder());
+//        System.out.println(binaryTree.postOrder());
+//        System.out.println(binaryTree.levelOrder());
+//        System.out.println(bst.inOrder());
+//        binaryTreePrint.printTree(root);
+
+        bst.removeElement(5);
+        bst.removeElement(8);
+        bst.rebalance();
+
+        // binaryTreePrint.printTree(root);
+        binaryTreePrint.printTree(bst.getRoot());
 
     }
 }
